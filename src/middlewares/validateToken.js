@@ -2,6 +2,7 @@ const { validateToken } = require('../auth/validateJWT');
 
 const validatingToken = (req, res, next) => {
     const { authorization } = req.headers;
+    console.log(authorization);
     if (!authorization) {
         res.status(401).json({
             message: 'Token not found',

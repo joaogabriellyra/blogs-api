@@ -1,4 +1,3 @@
-// src/models/User.js
 module.exports = (sequelize, DataTypes) => {
     const Category = sequelize.define('Category', {
         id: { 
