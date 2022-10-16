@@ -7,4 +7,12 @@ const getUser = async (email, password) => {
     return createToken({ id: user.id, email: user.email });
 };
 
-module.exports = { getUser };
+const createUser = async (displayName, email, password, image) => {
+    const user = await User.create({ displayName, email, password, image });
+    return createToken({ id: user.id, email: user.email });
+};
+
+module.exports = { 
+    getUser,
+    createUser,
+ };
