@@ -2,6 +2,7 @@ const express = require('express');
 const routes = require('./routes');
 const validateLoginFields = require('./middlewares/validateLoginFields');
 const validateCreateUsersFields = require('./middlewares/validateCreateUsersField');
+const validateToken = require('./middlewares/validateToken');
 // ...
 
 const app = express();
@@ -12,6 +13,8 @@ const apiRoutes = express.Router();
 
 apiRoutes.post('/login', validateLoginFields, routes.login);
 apiRoutes.post('/user', validateCreateUsersFields, routes.createUser);
+apiRoutes.get('/user', validateToken, routes.getUsers);
+apiRoutes.get('/user/:id', validateToken, routes.getUserById);
 
 app.use(apiRoutes);
 // ...

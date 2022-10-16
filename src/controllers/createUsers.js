@@ -1,6 +1,6 @@
-const UserService = require('../services/user.service');
+/* const UserService = require('../services/user.service');
 
-module.exports = async (req, res) => {
+const createUser = async (req, res) => {
     try {
         const { displayName, email, password, image } = req.body;
         const token = await UserService.createUser(displayName, email, password, image);
@@ -11,4 +11,4 @@ module.exports = async (req, res) => {
             message: 'User already registered',
           });
     }
-};
+}; */
