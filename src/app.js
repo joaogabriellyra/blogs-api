@@ -13,6 +13,7 @@ app.use(express.json());
 const apiRoutes = express.Router();
 
 apiRoutes.post('/categories', validateToken, routes.createCategories);
+apiRoutes.get('/categories', validateToken, routes.getCategories);
 apiRoutes.post('/login', validateLoginFields, routes.login);
 apiRoutes.post('/user', validateCreateUsersFields, routes.createUser);
 apiRoutes.get('/user', validateToken, routes.getUsers);
