@@ -30,3 +30,5 @@ module.exports = {
     ...options,
   },
 };
+
+console.log(process.env.MYSQL_USER);
