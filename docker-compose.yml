@@ -60,6 +60,7 @@ services:
       - 33060:33060
     environment:
       MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABSE: blogs-api
     networks:
       - blogs_api_net
 
