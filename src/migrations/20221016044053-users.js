@@ -23,11 +23,11 @@ module.exports = {
         type: Sequelize.STRING
       },
       image: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.STRING
       }
     }, {
-      underscored: true
+      underscored: true,
     })
   },
 

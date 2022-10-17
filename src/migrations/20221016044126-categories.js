@@ -14,7 +14,7 @@ module.exports = {
         type: Sequelize.STRING
       }
     }, {
-      timestamps: false
+      timestamps: false,
     })
   },
 
