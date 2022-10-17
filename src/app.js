@@ -14,6 +14,7 @@ app.use(express.json());
 
 const apiRoutes = express.Router();
 
+apiRoutes.delete('/user/me', validateToken, routes.deleteUser);
 apiRoutes.delete('/post/:id', validateToken, validateUserDelete, routes.deletePost);
 apiRoutes.put('/post/:id', validateToken, validatePostUpdateFields, routes.updatePost);
 apiRoutes.get('/post/:id', validateToken, routes.getPostById);

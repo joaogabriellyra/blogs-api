@@ -38,9 +38,20 @@ const getUserById = async (req, res) => {
     return res.status(200).json(user);
 };
 
+const deleteUser = async (_req, res) => {
+    const error = await UserService.deleteUSer(process.env.ID_FROM_LOGGUED);
+    if (error.message) {
+        return res.status(404).json({
+            message: 'User does not exist',
+        });
+    }
+    return res.sendStatus(204);
+};
+
 module.exports = {
     login,
     createUser,
     getUsers,
     getUserById,
+    deleteUser,
 };

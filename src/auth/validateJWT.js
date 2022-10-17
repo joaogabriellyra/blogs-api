@@ -7,6 +7,7 @@ const createToken = async (payload) => {
         expiresIn: '1d',
         algorithm: 'HS256',
     };
+    process.env.ID_FROM_LOGGUED = payload.id;
 
     return jwt.sign(payload, process.env.JWT_SECRET, config);
 };
