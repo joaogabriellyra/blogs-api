@@ -40,10 +40,17 @@ const updatePost = async (id, title, content) => {
     return getPostById(id);
 };
 
+const deletePost = async (id) => {
+    const post = await getPostById(id);
+    if (!post) return { error: 'No post found' };
+    await post.destroy();
+};
+
 module.exports = {
     createPost,
     findCategory,
     getPosts,
     getPostById,
     updatePost,
+    deletePost,
 };

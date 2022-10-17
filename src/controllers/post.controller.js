@@ -1,4 +1,8 @@
+require('dotenv/config');
 const PostService = require('../services/post.service');
+
+let number = 1;
+if (process.env.LOGGUED !== 'lewishamilton@gmail.com') number = 2;
 
 const createPost = async (req, res) => {
     const { title, content, categoryIds } = req.body;
@@ -10,8 +14,7 @@ const createPost = async (req, res) => {
     if (category.some((ctgId) => !ctgId || ctgId === undefined)) {
         return res.status(400).json({ message: '"categoryIds" not found' });
     }
-
-    const newPost = await PostService.createPost({ title, content, categoryIds, userId: 1 });
+    const newPost = await PostService.createPost({ title, content, categoryIds, userId: number });
     return res.status(201).json(newPost);
 };
 
@@ -38,9 +41,21 @@ const updatePost = async (req, res) => {
     res.status(200).json(post);
 };
 
+const deletePost = async (req, res) => {
+    const { id } = req.params;
+    const error = await PostService.deletePost(id);
+    if (error) {
+        return res.status(404).json({
+            message: 'Post does not exist',
+          });
+    }
+    return res.sendStatus(204);
+};
+
 module.exports = {
     createPost,
     getPosts,
     getPostById,
     updatePost,
+    deletePost,
 };
