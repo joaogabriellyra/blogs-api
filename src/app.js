@@ -3,6 +3,7 @@ const routes = require('./routes');
 const validateLoginFields = require('./middlewares/validateLoginFields');
 const validateCreateUsersFields = require('./middlewares/validateCreateUsersField');
 const validateToken = require('./middlewares/validateToken');
+const validatePostUpdateFields = require('./middlewares/validatePostUpdateFields');
 // const validateCategories = require('./middlewares/validateCategories');
 // ...
 
@@ -12,6 +13,7 @@ app.use(express.json());
 
 const apiRoutes = express.Router();
 
+apiRoutes.put('/post/:id', validateToken, validatePostUpdateFields, routes.updatePost);
 apiRoutes.get('/post/:id', validateToken, routes.getPostById);
 apiRoutes.get('/post', validateToken, routes.getPosts);
 apiRoutes.post('/post', validateToken, routes.createPost);

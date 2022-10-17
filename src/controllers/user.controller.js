@@ -1,9 +1,11 @@
 const UserService = require('../services/user.service');
+require('dotenv/config');
 
 const login = async (req, res) => {
     const { email, password } = req.body;
     const user = await UserService.getUser(email, password);
     if (user.error) return res.status(400).json({ message: user.message });
+    process.env.LOGGUED = email;
     res.status(200).json({ token: user });
 };
 

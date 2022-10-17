@@ -10,7 +10,7 @@ const validatingToken = (req, res, next) => {
     }
     try {
         const user = validateToken(authorization);
-        req.user = user.data;
+        req.user = user;
         next();
     } catch (error) {
         res.status(401).json({
