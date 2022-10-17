@@ -11,6 +11,8 @@ const app = express();
 app.use(express.json());
 
 const apiRoutes = express.Router();
+
+apiRoutes.get('/post/:id', validateToken, routes.getPostById);
 apiRoutes.get('/post', validateToken, routes.getPosts);
 apiRoutes.post('/post', validateToken, routes.createPost);
 apiRoutes.post('/categories', validateToken, routes.createCategories);
